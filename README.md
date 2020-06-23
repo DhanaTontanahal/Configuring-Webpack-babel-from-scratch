@@ -7,6 +7,7 @@ Webpack 4 , Babel 7 is a good combination.
 J FYI
 Babel 7 drops the support for unmaintained node.js versions (0.10, 0.12 , 4.5)
 https://github.com/babel/babel/tree/main/packages
+
 We have all the babel packages under 1 name space babel , so we use @babel namespace.
 yearly presets like @babel/preset-es2015 etc are not required and we can use @babel/preset-env
 stage presets are also removed like @babel-stage-0
@@ -25,10 +26,19 @@ Webpack:
 Add webpack as DEV dependancy webpack webpack-cli 
 webpack-dev-server (local server with hot reload)
 
-html-webpack-plugin@next (creating html file at runtime) to serve webpack bundles (https://webpack.js.org/plugins/html-webpack-plugin/)
-babel-loader @babel/core (https://babeljs.io/setup#installation)
+html-webpack-plugin@next (creating html file at runtime) to serve webpack bundles 
+
+(https://webpack.js.org/plugins/html-webpack-plugin/)
+
+babel-loader @babel/core
+
+(https://babeljs.io/setup#installation)
+
 https://webpack.js.org/loaders/babel-loader/
-@babel/plugin-proposal-class-properties (search for class properties in babel packages website https://github.com/babel/babel/tree/main/packages
+
+@babel/plugin-proposal-class-properties 
+(search for class properties in babel packages website 
+https://github.com/babel/babel/tree/main/packages
 @babel/preset-react(for jsx transpilation)
 
 npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin@next babel-loader @babel/core @babel/preset-env 
@@ -39,8 +49,14 @@ Now create webpack.config.js in the root location
 module.exports={
 entry//by default it goes to src/index.js so no need to mention
 build//by default it goes to dist/main.js folder
-devtool (check here and select as per your requirement) https://webpack.js.org/configuration/devtool/ -->cheap-module-source-map(not that slow, fit for prod , can see source
-next is module---> module:[] --->from https://babeljs.io/setup#installation
+devtool (check here and select as per your requirement)
+
+https://webpack.js.org/configuration/devtool/ 
+-->cheap-module-source-map(not that slow, fit for prod , can see source
+next is module---> module:[] --->from 
+https://babeljs.io/setup#installation
+
+
 module: {
   rules: [
     { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' } /// line 1.)
@@ -48,10 +64,11 @@ module: {
 }
 
 the above line is not going to appply any presets or plugins
-we neeed to explicitly do this with babelrc file, there are many ways including the passing options:{} in the line 1.) but we are going to use babelrc file
+we neeed to explicitly do this with babelrc file, 
+there are many ways including the passing options:{} in the line 1.) 
+but we are going to use babelrc file
+
 https://babeljs.io/docs/en/configuration
-
-
 
 }
 
@@ -67,8 +84,6 @@ https://babeljs.io/docs/en/configuration
     ]
 }
 
-
-
 Now go to package.json and move the scripts to top
 and customize the scripts
 
@@ -81,7 +96,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 plugins: [new HtmlWebpackPlugin()]
 this plugin creates a index.html file at runtime
 this takes the sample template as one of the arguments
-add a template (check https://github.com/jantimon/html-webpack-plugin)
+add a template
+(check https://github.com/jantimon/html-webpack-plugin)
 plugins: [new HtmlWebpackPlugin({sampletemplate
 })]
 
@@ -155,12 +171,14 @@ package.json
 
 Credit:
 https://www.youtube.com/watch?v=A4swyDR45SY
+
 https://codesandbox.io/s/qq4oz0ym69
+
 
 Thanks
 
 
-Now start the the webpacck webserver
+Now start the the webpack webserver
 
 npm runstart
 
@@ -180,6 +198,7 @@ Add useBuiltIns:'entry' in the presets in babelrc file
 
 Now add the targets , i.e the build for the  target browsers to focus on.
 Check jhere for more details.
+
 https://jamie.build/last-2-versions
 
 https://browserl.ist/
@@ -219,7 +238,4 @@ final babelrc
     ]
 }
 
-CreditsL:
 
-https://codesandbox.io/s/qq4oz0ym69
-https://www.youtube.com/watch?v=A4swyDR45SY
