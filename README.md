@@ -92,6 +92,132 @@ Now add options to the webpack deve server
 
 you can add either in webpack config file or directly from package.json
 
+Final config files.
+webpack
+
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports={
+    devtool:'cheap-module-source-map',
+    module: {
+        rules: [
+          { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+        ]
+      },
+      plugins: [new HtmlWebpackPlugin({
+          template:'index.html'
+      })]
+}
+
+package.json
+
+{
+  "name": "react-webpack4",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --port 4000 --compress --mode development",
+    "dev":"webpack --mode development --progress",
+    "build": "webpack --mode production -progress"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.0.1",
+    "@material-ui/icons": "^3.0.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^4.0.0-beta.14",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
+
+
+.babelrc
+{
+    "presets":[
+     "@babel/env","@babel/react"   
+    ],
+    "plugins": [
+        "@babel/proposal-class-properties"
+    ]
+}
+
+
+
+Credit:
+https://www.youtube.com/watch?v=A4swyDR45SY
+https://codesandbox.io/s/qq4oz0ym69
+
+Thanks
+
+
+Now start the the webpacck webserver
+
+npm runstart
+
+
+Application openss up at the port 4000
+
+Lets moveon for adding support for old browsers with the help of polyfill babel package.
+
+install babel polyfill
+
+npm install @babel/polyfill
+Add the package to entry file as import '@babel/polyfill
+import it at the top in index.js
+
+
+Add useBuiltIns:'entry' in the presets in babelrc file
+
+Now add the targets , i.e the build for the  target browsers to focus on.
+Check jhere for more details.
+https://jamie.build/last-2-versions
+
+https://browserl.ist/
+
+
+
+"browsers": [
+  ">0.25%",
+  "not ie 11",
+  "not op_mini all"
+]
+
+
+
+final babelrc
+
+
+{
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "useBuiltIns": "entry",
+                "targets": {
+                    "browsers": [
+                        ">0.25%",
+                        "not ie 11",
+                        "not op_mini all"
+                    ]
+                }
+            }
+        ],
+        "@babel/react"
+    ],
+    "plugins": [
+        "@babel/proposal-class-properties"
+    ]
+}
 
 
 
