@@ -110,7 +110,7 @@ you can add either in webpack config file or directly from package.json
 
 Final config files.
 webpack
-
+```
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports={
@@ -125,8 +125,10 @@ module.exports={
       })]
 }
 
+```
 package.json
 
+```
 {
   "name": "react-webpack4",
   "version": "1.0.0",
@@ -156,7 +158,9 @@ package.json
   }
 }
 
+```
 
+```
 .babelrc
 {
     "presets":[
@@ -166,7 +170,7 @@ package.json
         "@babel/proposal-class-properties"
     ]
 }
-
+```
 
 
 Credit:
@@ -215,7 +219,7 @@ https://browserl.ist/
 
 final babelrc
 
-
+```
 {
     "presets": [
         [
@@ -237,5 +241,5 @@ final babelrc
         "@babel/proposal-class-properties"
     ]
 }
-
+```
 
